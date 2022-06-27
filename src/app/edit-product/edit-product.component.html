@@ -3,17 +3,25 @@
       <div class="panel-heading" >Edition du Produit</div>
      <div class="panel-body" *ngIf="currentProduct">
        <form #f="ngForm" (ngSubmit)="onUpateProduct(f.value)">
+
+        
+
+        <div class="form-group">
+          <label class="control-label">Quantite</label>
+          <input class="form-control" style="display:none;" type="number" name="id" ngModel [(ngModel)]="currentProduct.id">
+        </div>
+
          <div class="form-group">
            <label class="control-label">designation</label>
-           <input class="form-control" type="text" name="designation" ngModel [(ngModel)]="currentProduct.designation">
+           <input class="form-control" type="text" name="libelle" ngModel [(ngModel)]="currentProduct.libelle">
          </div>
          <div class="form-group">
-           <label class="control-label">Quantite</label>
-           <input class="form-control" type="number" name="quantite" ngModel [(ngModel)]="currentProduct.quantite">
+           <label class="control-label">Prix:</label>
+           <input class="form-control" type="number" name="prix" ngModel [(ngModel)]="currentProduct.prix">
          </div>
          <div class="form-group">
-           <label class="control-label">Prix</label>
-           <input class="form-control" type="text" name="price" ngModel [(ngModel)]="currentProduct.price">
+           <label class="control-label">Unité:</label>
+           <input class="form-control" type="text" name="unite" ngModel [(ngModel)]="currentProduct.unite">
          </div>
          <button class="btn btn-success" type="submit" >Update</button>
        </form>

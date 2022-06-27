@@ -6,15 +6,28 @@
         <form #f="ngForm" (ngSubmit)="onSaveProduct(f.value)">
           <div class="form-group">
             <label class="control-label">designation</label>
-            <input class="form-control" type="text" name="designation" ngModel>
+            <input class="form-control" type="text" name="libelle" ngModel [(ngModel)]="materiel.libelle">
           </div>
+
           <div class="form-group">
-            <label class="control-label">Quantite</label>
-            <input class="form-control" type="number" name="quantite" ngModel>
+            <label>Categorie :</label>
+
+            <select class="form-control" ngModel [ngModel]="materiel.id" (ngModelChange)="fun($event)"   >
+
+              
+
+              <option *ngFor="let c of categories" name="idCategorie" [value]="c.id" >{{c.id}} / {{c.libelle}}</option>
+              
+            </select>
           </div>
+
           <div class="form-group">
             <label class="control-label">Prix</label>
-            <input class="form-control" type="text" name="price" ngModel>
+            <input class="form-control" type="number" name="prix" ngModel [(ngModel)]="materiel.prix">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Unite</label>
+            <input class="form-control" type="text" name="unite" ngModel [(ngModel)]="materiel.unite">
           </div>
           <button class="btn btn-success" type="submit">save</button>
 
@@ -29,15 +42,15 @@
         </div>
         <div class="form-group">
           <label>Designation:</label>
-          <label>{{currentProduct.designation}}</label>
+          <label>{{currentProduct.libelle}}</label>
         </div>
         <div class="form-group">
-          <label>Quantite:</label>
-          <label>{{currentProduct.quantite}}</label>
+          <label>Unite:</label>
+          <label>{{currentProduct.unite}}</label>
         </div>
         <div class="form-group">
           <label>Prix:</label>
-          <label>{{currentProduct.price}}</label>
+          <label>{{currentProduct.prix}}</label>
         </div>
 
       </div>

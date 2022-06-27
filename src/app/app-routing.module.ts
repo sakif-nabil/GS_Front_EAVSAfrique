@@ -9,13 +9,13 @@ import {BienvenueComponent} from "./bienvenue/bienvenue.component";
 
 const routes: Routes = [
   {
-    path:"products",component:ProduitsComponent
+    path:"materielpaginatedList",component:ProduitsComponent
   },
   {
-    path:"new-product",component:NewProductComponent
+    path:"new-materiel",component:NewProductComponent
   },
   {
-    path:"", redirectTo:"/products",pathMatch:'full'
+    path:"", redirectTo:"materielpaginatedList",pathMatch:'full'
   },
   {
     path:"edit-product/:id",component:EditProductComponent

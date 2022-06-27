@@ -22,7 +22,8 @@ public currentKeyword:string="";
       this.catService.getProducts(this.currentPage,this.size)
         .subscribe(data=>{
           this.produits=data;
-          this.totalpages=data["page"].totalPages;
+          console.log(this.produits);
+          this.totalpages=data["page"]?.totalPages;
           this.pages= new Array<number>(this.totalpages);
         },err=>{
           console.log(err);
@@ -70,11 +71,15 @@ public currentKeyword:string="";
 
   onDeleteProduct(p) {
     let conf=confirm("Are you sure?");
+    let data;
+    
     if(conf){
-      this.catService.deleteResource(p._links.self.href)
+      let obj = {id:p.id}
+      this.catService.deleteResource(obj,"/materiel/delete")
         .subscribe(data=> {
           this.chercherProduits();
         },err=>{
+          console.log(err)
         })
     }
 
@@ -82,7 +87,7 @@ public currentKeyword:string="";
 
   onEditProduct(p) {
 
-    let url=p._links.self.href;
-    this.router.navigateByUrl("/edit-product/"+btoa(url));
+    let id=p.id;
+    this.router.navigateByUrl("/edit-product/"+btoa(id));
   }
 }

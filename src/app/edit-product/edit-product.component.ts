@@ -9,14 +9,15 @@ import {Product} from "../model/product.model";
   styleUrls: ['./edit-product.component.css']
 })
 export class EditProductComponent implements OnInit {
-  public currentProduct: Product;
-  private url: string;
+  public currentProduct: any;
+  private id: any;
 
   constructor(private router:Router, private activatedRoute:ActivatedRoute, private catService:CatalogueService) { }
 
   ngOnInit(): void {
-    this.url= atob(this.activatedRoute.snapshot.params.id);
-    this.catService.getResource(this.url)
+    this.id= atob(this.activatedRoute.snapshot.params.id);
+    console.log( "-------------------------"+this.id);
+    this.catService.getResource("/materiel/"+this.id)
       .subscribe(data=> {
         this.currentProduct=data;
       },err=>{
@@ -28,7 +29,7 @@ export class EditProductComponent implements OnInit {
 
 
   onUpateProduct(value: any) {
-         this.catService.updateResource(this.url,value)
+         this.catService.updateResource("/materiel",value)
            .subscribe(data=> {
              alert("Mise a jour avec succes");
              this.router.navigateByUrl("/products");

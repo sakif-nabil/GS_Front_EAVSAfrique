@@ -25,11 +25,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let p of produits._embedded.produits">
+        <tr *ngFor="let p of produits">
           <td>{{p.id}}</td>
-          <td>{{p.designation}}</td>
-          <td>{{p.price|number:'0.2'}}</td>
-          <td>{{p.quantite}}</td>
+          <td>{{p.libelle}}</td>
+          <td>{{p.prix|number:'0.2'}}</td>
+          <td>{{p.unite}}</td>
           <td><a class="btn btn-danger" (click)="onDeleteProduct(p)" >Delete</a></td>
           <td><a class="btn btn-success" (click)="onEditProduct(p)" >Edit</a></td>
 
